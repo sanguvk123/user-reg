@@ -84,6 +84,17 @@ def explore():
     return render_template("index.html", title='Explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
 
+@app.route('/buyproduct')
+@login_required
+def buyproduct():
+    page = request.args.get('page', 1, type=int)
+    products = Product.query.order_by(Product.timestamp.desc()).paginate(
+        page, app.config['PRODUCTS_PER_PAGE'], False)
+    return render_template("buy.html", title='Buy', products=products.items)
+
+
+
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -140,7 +151,7 @@ def edit_profile():
         current_user.about_me = form.about_me.data
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('edit_profile'))
+        return redirect(url_for('index'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me

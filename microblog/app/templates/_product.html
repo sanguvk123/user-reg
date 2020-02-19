@@ -1,0 +1,24 @@
+<table class="table table-hover">
+        <tr>
+            <td width="70px">
+                <a href="{{ url_for('user', username=product.author.username) }}">
+                    <img src="{{ product.author.avatar(70) }}" />
+                </a>
+            </td>
+            <!--<td>
+                <a href="{{ url_for('user', username=product.author.username) }}">
+                    {{ product.author.username }}
+                </a>
+                says:
+                <br>
+                {{ product.body }}
+            </td>-->
+            <a href="{{ url_for('user', username=product.author.username) }}">
+              {% if product %}
+                {{ product.author.body }}
+              {% endif %}
+                {{ product.author.username }}
+            </a>
+            wants to sell {{ product.body }}
+        </tr>
+    </table>
