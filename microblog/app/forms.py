@@ -2,14 +2,22 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
-from wtforms import StringField, TextAreaField, SubmitField
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField, RadioField, FloatField, SelectField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Length
+from app.models import *
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
+
+class addCategoryForm(FlaskForm):
+    category_name = StringField('Category Name', validators=[DataRequired()])
+    submit = SubmitField('Save')
+
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -33,6 +41,13 @@ class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[
         DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('Submit')
+
+class addProductForm(FlaskForm):
+    productname = StringField('Product Name', validators=[DataRequired()])
+    productcategory = StringField('Product Category', validators=[DataRequired()])
+    price = IntegerField('Price', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
