@@ -9,6 +9,7 @@ from logging.handlers import SMTPHandler
 from logging.handlers import RotatingFileHandler
 import os
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ bootstrap = Bootstrap(app)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+moment = Moment(app)
 login = LoginManager(app)
 mail = Mail(app)
 login.login_view = 'login'
