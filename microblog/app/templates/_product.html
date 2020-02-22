@@ -5,20 +5,19 @@
                     <img src="{{ product.author.avatar(70) }}" />
                 </a>
             </td>
-            <!--<td>
+            <td>
                 <a href="{{ url_for('user', username=product.author.username) }}">
                     {{ product.author.username }}
                 </a>
                 says:
                 <br>
                 {{ product.body }}
-            </td>-->
+            </td>
             <a href="{{ url_for('user', username=product.author.username) }}">
-              {% if product %}
-                {{ product.author.body }}
-              {% endif %}
                 {{ product.author.username }}
             </a>
-            wants to sell {{ product.body }}
+            said {{ moment(product.timestamp).fromNow() }}:
+            <br>
+            {{ product.body }}
         </tr>
     </table>

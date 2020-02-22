@@ -90,6 +90,10 @@ def buyproduct():
     page = request.args.get('page', 1, type=int)
     products = Product.query.order_by(Product.timestamp.desc()).paginate(
         page, app.config['PRODUCTS_PER_PAGE'], False)
+    next_url = url_for('explore', page=products.next_num) \
+        if products.has_next else None
+    prev_url = url_for('explore', page=products.prev_num) \
+        if products.has_prev else None
     return render_template("buy.html", title='Buy', products=products.items)
 
 
@@ -155,6 +159,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        #form.gender.data = current_user.gender
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
@@ -204,7 +209,6 @@ def logout():
 def buy():
     if current_user.is_authenticated:
         return render_template('buy.html')
-
 
 @app.route('/sell')
 @login_required

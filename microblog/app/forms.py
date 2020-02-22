@@ -6,6 +6,7 @@ from wtforms import StringField, SubmitField, TextAreaField, IntegerField, Radio
 from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Length
 from app.models import *
+from wtforms import RadioField
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -52,6 +53,7 @@ class addProductForm(FlaskForm):
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    #gender = RadioField('Label', choices=[('Male', 'Aadmi'),('Female','Aurat')])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):
