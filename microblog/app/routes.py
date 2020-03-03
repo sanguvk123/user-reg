@@ -51,14 +51,13 @@ def add_product():
     form = addProductForm()
     if form.validate_on_submit():
         productname = Product(body=form.productname.data, author=current_user)
-        db.session.add(productname)
-        db.session.commit()
         productcategory = Product(category=form.productcategory.data, author=current_user)
-        db.session.add(productcategory)
-        db.session.commit()
         rate = Product(rate=form.rate.data, author=current_user)
         db.session.add(rate)
+        db.session.add(productname)
+        db.session.add(productcategory)
         db.session.commit()
+
         flash('Your Product has been added')
         return redirect(url_for('index'))
     #page = request.args.get('page', 1, type=int)
