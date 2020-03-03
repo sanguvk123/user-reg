@@ -2,16 +2,17 @@
         <tr>
             <td width="70px">
                 <a href="{{ url_for('user', username=product.author.username) }}">
-                    <img src="{{ product.author.avatar(70) }}" />
+                    <!--<img src="{{ product.author.avatar(70) }}" />-->
                 </a>
             </td>
             <td>
                 <a href="{{ url_for('user', username=product.author.username) }}">
                     {{ product.author.username }}
                 </a>
-                says:
+                wants to sell :
                 {{ product.body }}
-                {{ product.price }}
+                Price : {{ product.rate }}
+                Category : {{ product.category }}
             </td>
         </tr>
     </table>

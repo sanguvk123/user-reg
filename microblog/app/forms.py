@@ -46,14 +46,14 @@ class PostForm(FlaskForm):
 class addProductForm(FlaskForm):
     productname = StringField('Product Name', validators=[DataRequired()])
     productcategory = StringField('Product Category', validators=[DataRequired()])
-    price = IntegerField('Price', validators=[DataRequired()])
+    rate = IntegerField('Rate', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    #gender = RadioField('Label', choices=[('Male', 'Aadmi'),('Female','Aurat')])
+    gender = RadioField('Label', choices=[('Male', 'Male'),('Female','Female')])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):
