@@ -100,11 +100,30 @@ class Post(db.Model):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
-    #productname = db.Column(db.String(140))
-    #productcategory = db.Column(db.String(140))
-    #price = db.Column(db.Integer())
+
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Product {}>'.format(self.body)
+
+
+class Product_category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    price = db.Column(db.Integer)
+    category = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Product_category {}>'.format(self.body)
+
+class Product_price(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Product_price {}>'.format(self.body)

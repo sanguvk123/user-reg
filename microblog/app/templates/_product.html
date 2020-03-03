@@ -10,14 +10,8 @@
                     {{ product.author.username }}
                 </a>
                 says:
-                <br>
                 {{ product.body }}
+                {{ product.price }}
             </td>
-            <a href="{{ url_for('user', username=product.author.username) }}">
-                {{ product.author.username }}
-            </a>
-            said {{ moment(product.timestamp).fromNow() }}:
-            <br>
-            {{ product.body }}
         </tr>
     </table>

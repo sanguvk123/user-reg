@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect
 from flask import url_for
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user
-from app.models import User, Post, Product
+from app.models import User, Post, Product, Product_category, Product_price
 from app.forms import PostForm
 from flask import Markup
 from app.models import *
@@ -53,12 +53,12 @@ def add_product():
         productname = Product(body=form.productname.data, author=current_user)
         db.session.add(productname)
         db.session.commit()
-        productcategory = Product(body=form.productcategory.data, author=current_user)
-        db.session.add(productname)
-        db.session.commit()
-        price = Product(body=form.price.data, author=current_user)
-        db.session.add(productname)
-        db.session.commit()
+        #productcategory = Product(category=form.productcategory.data, author=current_user)
+        #db.session.add(productcategory)
+        #db.session.commit()
+        #price = Product(price=form.price.data, author=current_user)
+        #db.session.add(price)
+        #db.session.commit()
         flash('Your Product has been added')
         return redirect(url_for('index'))
     #page = request.args.get('page', 1, type=int)
@@ -244,13 +244,3 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
-
-#    form = addProductForm()
-
-#    if form.validate_on_submit():
-#        product = Product(body=form.product.data, author=current_user)
-#        db.session.add(rroduct)
-#        db.session.commit()
-#        flash("Your product is live now")
-#        return redirect(url_for('index'))
-#    return render_template('addproduct.html', title='Add Product', form=form)
