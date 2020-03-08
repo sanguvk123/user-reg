@@ -1,11 +1,27 @@
-This is a user registration app.
+# This is a user registration app
 
-Step 1 : Download the Repository
+**Step 1** : Download the Repository
 
-Step 2 : Go to microblog/app/venv/Scripts and write activate in your terminal
+**Step 2** : Create a virtual environment
 
-Step 3 :  come back to the microblog directory and give the command "flask run"
+**Step 3**: 
 
-Step 4 : Go to the given url 127.0.0.1:5000
+```
+cd microblog
+```
 
-Woh your app is running now
+**Step 4** :  
+
+```
+pip install requirements.txt
+```
+
+**Step 5**: 
+
+```
+flask run
+```
+
+Step 5 : Go to the given url 127.0.0.1:5000
+
+
