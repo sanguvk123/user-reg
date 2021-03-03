@@ -1,4 +1,4 @@
-# This is a user registration app
+# This is a Social Media App
 
 **Step 1** : Download the Repository
 
